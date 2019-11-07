@@ -1,26 +1,31 @@
 # Estimate-Petrophysical-Rock-Types--PRT--from-normalized-core-data-using-KNN
 Predict Petrophysical Rock Types (PRT)
 
-This repository utilizes normalized core data with Euclidean distance-weighted estimations for only the KNN samples being considered. This program queries the Petrophysical Rock Types (PRT) as published in a paper containing this carbonate core analysis database with Thomeer Capillary Pressure parameters1.
+The objective of this project is to estimate Petrophysical Rock Types (PRTs) as defined by Clerke(1) for the Arab-D carbonate reservoir using just Porosity and Permeability. This project utilizes normalized Porosity and Permeability values. We calculate the Euclidean distance between the reference data and the normalized user defined poro-perm and determines the most likely PRT for the user defined values. 
 
-Clerke acquired over 400 High Pressure Mercury Injection Capillary Pressure (HPMI) measurements and fit Thomeer hyperbolas to these data to generate the Thomeer Capillary Pressure parameters Bulk Volume Occupied (BVi), Variability of Pore Throats (Gi) and Initial Displacement Pressures (Pdi) for each pore system i. From these data he established the PRTs for this Arab D carbonate reservoir. The bulk of the work by Clerke establishing the PRTs was based on the Initial Displacement Pressures for each pore system and the number of pore systems present in each sample. From the figure below it is rather evident that Clerke's methods created rather well defined PRTs as shown in the Figure below where each color represents a different PRT.  The Capillary Pressure curves and Pore Throat Distributions (PTD) shown on the right hand side of the figure show the uniqueness of each PRT. 
+The Arab D data set from Clerke is quite distinctive. Clerke acquired nearly 450 High Pressure Mercury Injection Capillary Pressure (HPMI) measurements in the Arab D reservoir; however, Clerke's final samples were randomly selected from 1,000's of pre-qualified core samples ensuring a broad distribution and representation of all Petrophysical properties.  Clerke fit a Thomeer hyperbolas to each pore system in each sample to generate the published Thomeer Capillary Pressure parameters including Bulk Volume Occupied (BVi), curvature of Capillary Pressure curve related to the variability of pore throats (Gi) and the Initial Displacement Pressures (Pdi) for each pore system i. From these data Clerke established the PRTs based on the Initial Displacement Pressures for each pore system and the number of pore systems present in each sample. From the figure below it is rather evident that Clerke's PRTs are Petrophysically well-defined where each color represents a different PRT.  The Capillary Pressure curves and Pore Throat Distributions (PTD) shown on the right hand side of the figure illustrate the unique characteristics of each PRT. 
 
 
 ![TS_Image](PRT.png)
 
-The PRTs are defined as follows:
+
+The characterization of each PRTs is shown below:
+
 
 ![TS_Image](Rock-Types.png)
 
 
-As can be seen in the figure above the PRTs are rather well segregated on the Porosity vs. Permeability Cross Plot. In addition, the correlation of Permeability vs. the Mode of the Pore Throats (Mode) has a high correlation with an correlation coefficient (r2) of 0.88 and Pd1 correlates to the Mode with a correlation coefficient of 0.99, where mode is calculated from the Thomeer Parameters:
+As can be seen in the first figure above, the PRTs are rather well segregated on the Porosity vs. Permeability Cross Plot as they fall in distinct regions or clusters on the Cross Plot. 
 
-	Mode = exp(-1.15*G1) * (214/Pd1)
+For modeling purposes it is important to take advantage of the excellent correlations between the Thomeer Capillary Pressure parameters. the correlation of core Permeability vs. the Mode of the Pore Throats Distribution has a high correlation coefficient of 0.88. Pd1 correlates to the Mode of the PTD with a correlation coefficient of 0.99. The Mode of the PTD can be calculated directly from the Thomeer Parameters using the following equation:
 
-The calculated Mode above as at the exact peak of the Pore Throat Distribution and does relate to the most abundant Pore Throat in the sample. We have found that the Mode of the PTD is very useful in the 3D modeling of Petrophysical Properties in both Carbonate and Clastic reservoirs. 
+	Mode of PTD (microns) = exp(-1.15*G1) * (214/Pd1)
+
+The calculated Mode of PTD above is located at the exact peak of the Capillary Pressure derivative-derived Pore Throat Distribution for the most dominate pore size, and this represents the most abundant pore throat for the sample. We have found that the Mode of the PTD to be very useful in the 2D and 3D modeling of Petrophysical Properties for both Carbonate and Clastic reservoirs. Winland's r35 tries to approximate the mode; however, Amaefule's FZI is the mean pore throat radius and falls between the two modes of a bi-modal carbonate sample. 
 
 
-For this repository we are using the inverse of the Euclidean distances for normalized porosity and permeability data to generate the distance-weighted KNN PRTs for each poro-perm combination. This process is based on the Euclidean distance difference between the normalized core analysis reference poro-perm data vs. the normalized user defined poro-perm combination and the inverse of the n nearest Euclidean distances are the only values being used for the distance-weighted averages. 
+
+
 
 
 
