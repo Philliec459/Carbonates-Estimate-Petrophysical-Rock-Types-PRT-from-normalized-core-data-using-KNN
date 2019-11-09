@@ -23,6 +23,11 @@ For modeling purposes it is important to take advantage of the excellent correla
 
 The calculated Mode of PTD above is located at the exact peak of the Capillary Pressure derivative-derived Pore Throat Distribution for the most dominate pore size, and this represents the most abundant pore throat for the sample. We have found that the Mode of the PTD to be very useful in the 2D and 3D modeling of Petrophysical Properties for both Carbonate and Clastic reservoirs. Winland's r35 tries to approximate the mode; however, Amaefule's FZI is the mean pore throat radius and falls between the two modes of a bi-modal carbonate sample. 
 
+The code for this program requires the user to input Porosity and Permeability, and then the program calculates the most probable Rock Type (Rock_Index) and provides a Capillary Pressure curve for that Rock Type considering the user provided porosity and permeability.
+
+
+![TS_Image](knn_results.png)
+
 
 
 
