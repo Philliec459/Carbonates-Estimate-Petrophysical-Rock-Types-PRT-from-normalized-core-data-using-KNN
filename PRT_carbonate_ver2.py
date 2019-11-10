@@ -454,15 +454,15 @@ print(Style.RESET_ALL)
 
 #print(most_frequent(List)) 
 if most_frequent(List)   == 1:
-    RxType2 = 'Macro-Porous Rock with Meso-Porous Grains, note bi-modality'
+    RxType2 = 'Macro-Porous Rock with Meso-Porous Grains, generally bi-modal'
 elif most_frequent(List) == 2: 
-   RxType2 = 'Macro-Porous Rock with Micro-Porous Grains, note bi-modality'    
+   RxType2 = 'Macro-Porous Rock with Micro-Porous Grains,  bi-modal'    
 elif most_frequent(List) == 3:
-    RxType2 = 'Macro-Porous Rock with Meso and Micro Grains, note bi-modality'
+    RxType2 = 'Macro-Porous Rock with Meso and Micro Grains, bi-modal'
 elif most_frequent(List) == 4:
     RxType2 = 'Type 1 Meso-Porous Rock, uni-modal'
 elif most_frequent(List) == 5:
-    RxType2 = 'Type 1 Meso-Porous Rock with Micro-Porous Grains'
+    RxType2 = 'Type 1 Meso-Porous Rock with Micro-Porous Grains, bi-modal'
 else:
     RxType2 = 'Non-Reservoir, Type 2 Micro-Porous Rock'
 
@@ -474,7 +474,22 @@ else:
 # =============================================================================
 plt.figure(1)
 #plt.loglog(x, y  , 'g-', linewidth=1, label='Inv Dist Weighted Pc Curve')
-plt.loglog(x, y, 'r-' , linewidth=3, label='Pc Curve from KNN')
+
+if most_frequent(List)   == 1:
+    plt.loglog(x, y, color='cyan', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 1')
+elif most_frequent(List)   == 2: 
+    plt.loglog(x, y, color='dodgerblue', linestyle='solid', linewidth=4, label='Pc Curve Rx_Iindex 2')
+elif most_frequent(List)   == 3:
+    plt.loglog(x, y, color='blue', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 3')
+elif most_frequent(List)   == 4:
+    plt.loglog(x, y, color='yellow', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 4')
+elif most_frequent(List)   == 5:
+    plt.loglog(x, y, color='orange', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 5')
+else:
+    plt.loglog(x, y, color='brown', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 6')
+
+
+#plt.loglog(x, y, 'r-' , linewidth=3, label='Pc Curve from KNN')
 
 plt.xlim(50, 0.1)
 #plt.gca().invert_xaxis()
