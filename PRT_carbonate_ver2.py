@@ -478,7 +478,7 @@ plt.figure(1)
 if most_frequent(List)   == 1:
     plt.loglog(x, y, color='cyan', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 1')
 elif most_frequent(List)   == 2: 
-    plt.loglog(x, y, color='dodgerblue', linestyle='solid', linewidth=4, label='Pc Curve Rx_Iindex 2')
+    plt.loglog(x, y, color='dodgerblue', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 2')
 elif most_frequent(List)   == 3:
     plt.loglog(x, y, color='blue', linestyle='solid', linewidth=4, label='Pc Curve Rx_Index 3')
 elif most_frequent(List)   == 4:
